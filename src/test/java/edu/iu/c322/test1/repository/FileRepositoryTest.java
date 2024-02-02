@@ -17,8 +17,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-//@ExtendWith(SpringExtension.class)
-//@SpringBootTest
+
 class FileRepositoryTest {
 
 
@@ -66,7 +65,9 @@ class FileRepositoryTest {
         addToDB(q);
     }
 
-    void addToDB(Question question) {
+
+    void addToDB(Question question ) {
+
         FileRepository fileRepository = new FileRepository();
         boolean result = false;
         try {

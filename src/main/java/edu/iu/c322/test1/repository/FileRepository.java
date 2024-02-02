@@ -38,6 +38,7 @@ public class FileRepository {
     }
 
     public List<Question> findAll() throws IOException {
+
         List<Question> result = new ArrayList<>();
         Path path = Paths.get(QUESTION_DATABASE_NAME);
         if (Files.exists(path)) {
