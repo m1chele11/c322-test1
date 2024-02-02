@@ -4,14 +4,21 @@ import edu.iu.c322.test1.model.Question;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+//@ExtendWith(SpringExtension.class)
+//@SpringBootTest
 class FileRepositoryTest {
 
 
@@ -22,7 +29,11 @@ class FileRepositoryTest {
 
     @AfterAll
     static void cleanup() throws IOException {
-        Files.delete(Paths.get("questions-test.txt"));
+        Path filePath = Paths.get("questions-test.txt");
+
+        if (Files.exists(filePath)) {
+            Files.delete(filePath);
+        }
     }
 
     @Test
