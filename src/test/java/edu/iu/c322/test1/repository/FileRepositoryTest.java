@@ -23,12 +23,12 @@ class FileRepositoryTest {
 
     @BeforeAll
     static void setup() throws IOException {
-        Files.deleteIfExists(Paths.get("questions-test.txt"));
+        Files.deleteIfExists(Paths.get("questions.txt"));
     }
 
     @AfterAll
     static void cleanup() throws IOException {
-        Path filePath = Paths.get("questions-test.txt");
+        Path filePath = Paths.get("questions.txt");
 
         if (Files.exists(filePath)) {
             Files.delete(filePath);
