@@ -22,6 +22,7 @@ public class QuestionController {
     }
 
 
+    @PostMapping("/add")
     public boolean add(@RequestBody Question question) {
         try {
             return fileRepository.add(question);
@@ -31,6 +32,7 @@ public class QuestionController {
     }
 
 
+    @GetMapping("/all")
     public List<Question> findAll() {
         try {
             return fileRepository.findAll();
@@ -40,7 +42,7 @@ public class QuestionController {
     }
 
     @GetMapping("/search")
-    public List<Question> find( String answer) {
+    public List<Question> find( @RequestParam  String answer) {
         try {
             return fileRepository.find(answer);
         } catch (IOException e) {
@@ -49,7 +51,7 @@ public class QuestionController {
     }
 
     @GetMapping("/{id}")
-    public Question get( int id) {
+    public Question get( @PathVariable int id) {
         try {
             return fileRepository.get(id);
         } catch (IOException e) {
@@ -58,8 +60,8 @@ public class QuestionController {
     }
 
     @PostMapping("/{id}/image")
-    public boolean updateImage(int id,
-                                MultipartFile file) {
+    public boolean updateImage(@PathVariable int id,
+                                @RequestParam MultipartFile file) {
         try {
             return fileRepository.updateImage(id, file);
         } catch (IOException e) {
@@ -68,7 +70,7 @@ public class QuestionController {
     }
 
     @GetMapping("/{id}/image")
-    public ResponseEntity<?> getImage(int id) {
+    public ResponseEntity<?> getImage(@PathVariable int id) {
         try {
             byte[] image = fileRepository.getImage(id);
             return ResponseEntity.status(HttpStatus.FOUND)

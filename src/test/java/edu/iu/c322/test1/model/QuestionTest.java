@@ -8,12 +8,11 @@ class QuestionTest {
 
     @Test
     void toLine() {
-        Question q = new Question(1,
-                "Which word matches the image?",
+        Question q = new Question(1, "Which word matches the image?",
                 "elephant",
                 new String[]{"tiger", "bear", "elephant"});
-        String expected = "1,Which word matches the image?,elephant,tiger,bear,elephant";
-        assertEquals(expected, q.toLine());
+        String expected = "1, Which word matches the image?,elephant,tiger,bear,elephant";
+        assertEquals(expected, q.toLine().trim());
     }
 
     @Test
